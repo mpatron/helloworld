@@ -5,12 +5,12 @@ import org.junit.jupiter.api.Test;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class JObjectsLogFormatterTest {
+public class LogFormatterTest {
     private final Logger LOGGER = Logger.getLogger(getClass().getName());
 
     @Test
     public void testLogRecord() {
-        JObjectsLogFormatter.initializeLogging();
+        LogFormatter.initializeLogging();
         LOGGER.entering(getClass().getName(), "testLogRecord");
         LOGGER.finest("le mega fin.");
         LOGGER.finer("le plus fin.");

@@ -13,13 +13,13 @@ import java.util.logging.*;
 
 /**
  * Logger. Logger LOGGER =
- * Logger.getLogger(JObjectsLogFormatter.class.getName());
+ * Logger.getLogger(LogFormatter.class.getName());
  * LOGGER.info("java.util.logging.config.file="+System.getProperty(
  * "java.util.logging.config.file"));
  *
  * @author Mickaël Patron 28/02/2015
  */
-public class JObjectsLogFormatter extends Formatter {
+public class LogFormatter extends Formatter {
   public static final String ANSI_RESET = "\u001B[1;0m";
   public static final String ANSI_BLACK = "\u001B[1;30m";
   public static final String ANSI_RED = "\u001B[1;31m";
@@ -37,14 +37,14 @@ public class JObjectsLogFormatter extends Formatter {
   public static void initializeLogging() {
     //final String filePathnameLogging = "/org/jobjects/app/logging.properties";
     final String filePathnameLogging = "/logging.properties";
-    try (InputStream is = JObjectsLogFormatter.class.getResourceAsStream(filePathnameLogging)) {
+    try (InputStream is = LogFormatter.class.getResourceAsStream(filePathnameLogging)) {
       if (null == is) {
-        Logger.getLogger(JObjectsLogFormatter.class.getName())
+        Logger.getLogger(LogFormatter.class.getName())
               .severe("La ressource " + filePathnameLogging + " est introuvable.");
       }
       LogManager.getLogManager()
                 .readConfiguration(is);
-      Logger.getLogger(JObjectsLogFormatter.class.getName())
+      Logger.getLogger(LogFormatter.class.getName())
             .config("Chargement realisé de " + filePathnameLogging);
     } catch (Exception e) {
       e.printStackTrace();
@@ -88,12 +88,12 @@ public class JObjectsLogFormatter extends Formatter {
       output.append(StringUtils.rightPad("[" + record.getLevel()
                                                      .getName() + "]", 9));
     }
-    output.append(Thread.currentThread()
-                        .getName())
-          .append('|')
-          .append(" ")
-          .append(loggerName)
-          .append(" ")
+    output
+//          .append(Thread.currentThread().getName())
+//          .append('|')
+//          .append(" ")
+//          .append(loggerName)
+//          .append(" ")
           .append(" " + format.format(new Date(record.getMillis())))
           .append(" : ")
           .append("..."

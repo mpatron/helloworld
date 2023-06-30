@@ -7,7 +7,6 @@ import org.apache.commons.lang3.time.DurationFormatUtils;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
@@ -67,6 +66,7 @@ public class App {
   }
 
   public static void main(String[] args) throws Exception {
+    LogFormatter.initializeLogging();
     System.exit(run(args));
   }
 
@@ -113,10 +113,7 @@ public class App {
       return 1;
     }
 
-    String returnString = "..... Running quelque chose .....";
-
-    logger.log(Level.INFO,
-        "App a fait " + System.lineSeparator() + returnString + System.lineSeparator() + "...");
+    String returnString = action();
 
     t_program_end = System.currentTimeMillis();
     logger.info("Duration : " + DurationFormatUtils.formatDuration(t_program_end - t_program_start, "HH:mm:ss.SSS")
@@ -125,7 +122,9 @@ public class App {
     return returnValue;
   }
 
-  private void action() {
-    System.out.println("Hello World!");
+  private static String action() {
+    String returnValue = "Hello World!";
+    logger.info(returnValue);
+    return returnValue;
   }
 }
