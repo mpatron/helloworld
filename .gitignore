@@ -1,3 +1,32 @@
+###############################################################################
+
+# Fichier et répertoire de configuration de projet d'eclipse
+*.class
+
+# Package Files #
+*.jar
+*.war
+*.ear
+
+# Eclipse
+.classpath
+.project
+.settings
+
+# IntelliJ
+.idea/
+
+# Répertoire de travail de maven
+target/
+
+# fichier temporaire de vim
+*~
+
+# Derby
+derby.log
+
+###############################################################################
+
 target/
 pom.xml.tag
 pom.xml.releaseBackup
