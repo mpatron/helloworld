@@ -84,7 +84,7 @@ public class App {
     String header = "Helloworld version " + version;
     String footer = "Copyright © 2006-2023 JObjects. All Rights Reserved";
 
-    CommandLineParser parser = new PosixParser();
+    CommandLineParser parser = new DefaultParser();
     Options options = configParameters();
     try {
 
@@ -114,6 +114,9 @@ public class App {
     }
 
     String returnString = action();
+    if (StringUtils.isEmpty(returnString)) {
+      logger.severe("Internal error");
+    }
 
     t_program_end = System.currentTimeMillis();
     logger.info("Duration : " + DurationFormatUtils.formatDuration(t_program_end - t_program_start, "HH:mm:ss.SSS")
